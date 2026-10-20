@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bounce Lounge</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/common.js"></script>
+</head>
+<body>
+  <button class="icon-btn theme-fab" id="themeBtn" aria-label="Switch between morning and evening theme"></button>
+  <main class="home">
+    <section class="home-card">
+      <h1>Bounce Lounge</h1>
+      <p class="lead">A cozy room for you and your friends. Talk, share your screen, or put a link on the big screen.</p>
+      <label>Your name
+        <input id="name" maxlength="24" placeholder="Sam" autocomplete="nickname">
+      </label>
+      <button class="btn primary" id="create">Create a room</button>
+      <p class="or">or join a friend's room</p>
+      <form id="joinForm">
+        <input id="code" placeholder="abc-defg or invite link" aria-label="Room code or invite link">
+        <button class="btn">Join</button>
+      </form>
+      <p class="err" id="err" role="alert"></p>
+    </section>
+    <div class="mini" aria-hidden="true">
+      <div class="m-top"><i></i><i></i></div>
+      <i class="m-l"></i><i class="m-stage"></i><i class="m-r"></i>
+      <div class="m-bot"><i></i><i></i></div>
+    </div>
+  </main>
+  <script src="/js/home.js"></script>
+</body>
+</html>

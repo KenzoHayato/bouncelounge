@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bounce Lounge room</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/common.js"></script>
+</head>
+<body>
+  <!-- Pre-join -->
+  <div class="prejoin" id="prejoin">
+    <section class="home-card">
+      <h1>Ready to join?</h1>
+      <div class="preview-box" id="previewBox">
+        <video id="previewVideo" autoplay playsinline muted class="hidden"></video>
+        <span id="previewMsg">Starting your camera...</span>
+      </div>
+      <div class="prejoin-row">
+        <button class="icon-btn" id="pjMic" aria-label="Toggle microphone"></button>
+        <button class="icon-btn" id="pjCam" aria-label="Toggle camera"></button>
+      </div>
+      <p class="note" id="pjNote"></p>
+      <label>Microphone <select id="micSel"></select></label>
+      <label>Camera <select id="camSel"></select></label>
+      <label>Your name <input id="pjName" maxlength="24" autocomplete="nickname"></label>
+      <p class="err" id="pjErr" role="alert"></p>
+      <button class="btn primary" id="joinBtn">Join room</button>
+    </section>
+  </div>
+
+  <!-- Room -->
+  <div class="room hidden" id="room">
+    <header class="topbar">
+      <span class="brand">Bounce Lounge</span>
+      <div class="code-chip"><span id="roomCode"></span>
+        <button class="icon-btn sm" id="copyBtn" aria-label="Copy invite link" data-icon="copy"></button>
+      </div>
+      <button class="icon-btn" id="themeBtn" aria-label="Switch between morning and evening theme"></button>
+    </header>
+
+    <main class="layout">
+      <div class="around top" id="slot-top"></div>
+      <div class="around left" id="slot-left"></div>
+      <section class="stage" id="stage">
+        <video id="stageVideo" autoplay playsinline muted class="hidden"></video>
+        <div class="stage-avatar hidden" id="stageAvatar"></div>
+        <span class="stage-name" id="stageName"></span>
+        <div class="stage-msg hidden" id="stageMsg"><div class="stage-art" data-icon="screen"></div><h2 id="stageMsgTitle"></h2><p id="stageMsgText"></p></div>
+        <button class="btn stage-stop hidden" id="stopShareBtn">Stop sharing</button>
+        <div class="link-view hidden" id="linkView"></div>
+      </section>
+      <div class="around right" id="slot-right"></div>
+      <div class="around bottom" id="slot-bottom"></div>
+    </main>
+
+    <nav class="controls" aria-label="Call controls">
+      <button class="icon-btn" id="micBtn" aria-label="Turn microphone off"></button>
+      <button class="icon-btn" id="camBtn" aria-label="Turn camera off"></button>
+      <button class="icon-btn" id="shareBtn" aria-label="Share screen" data-icon="screen"></button>
+      <button class="icon-btn" id="linkBtn" aria-label="Share a link" data-icon="link"></button>
+      <button class="icon-btn" id="peopleBtn" aria-label="Show people" data-icon="users"></button>
+      <button class="icon-btn leave" id="leaveBtn" aria-label="Leave room"><span data-icon="leave" style="display:grid;width:20px"></span></button>
+    </nav>
+
+    <form class="link-pop hidden" id="linkPop">
+      <label for="linkInput">Put a link on the main stage</label>
+      <div class="row">
+        <input id="linkInput" placeholder="Paste a YouTube, Vimeo or web link" autocomplete="off" inputmode="url">
+        <button class="btn primary" id="linkGo">Show to everyone</button>
+      </div>
+      <p class="note">YouTube and Vimeo play in sync for everyone. Other pages show up for everyone, but each person scrolls on their own.</p>
+    </form>
+
+    <aside class="panel" id="panel" aria-label="People in this room">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <h2 id="peopleTitle">People</h2>
+        <button class="icon-btn sm" id="closePanel" aria-label="Close" data-icon="close"></button>
+      </div>
+      <ul id="peopleList"></ul>
+    </aside>
+  </div>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/js/webrtc.js"></script>
+  <script src="/js/audio.js"></script>
+  <script src="/js/stage.js"></script>
+  <script src="/js/room.js"></script>
+</body>
+</html>
